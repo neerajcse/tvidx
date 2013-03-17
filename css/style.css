@@ -1,0 +1,345 @@
+/*
+ * tvidx - Titans cross-browser video player.
+ * JQuery plugin which aims to degrade gracefully from HTML5 to Flash player.
+ * Under http://en.wikipedia.org/wiki/WTFPL
+ *
+ * Copyright (c) 2013 WTFPL
+ * Where free is really free.
+ *
+ * www.neerajkumar.net
+ * neerajkumar@outlook.com
+ *
+ */
+
+/* base styles */
+.titans-video-player {}
+.titans-video-play, .titans-volume-button {
+	cursor: pointer;
+}
+.titans-video-timer {
+	cursor: default;
+}
+
+
+/* Start of simpledark default theme */
+.titans-video-player.simpledark {
+	float: left;
+	position: relative;
+	padding: 10px;
+	border: 5px solid #61625d;
+
+	font-family: Arial, Helvetica, sans-serif;
+		
+	-moz-border-radius: 5px; /* FF1+ */
+	-webkit-border-radius: 5px; /* Saf3+, Chrome */
+	border-radius: 5px; /* Opera 10.5, IE 9 */
+	
+	background: #000000;
+	background-image: -moz-linear-gradient(top, #313131, #000000); /* FF3.6 */
+	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #313131),color-stop(1, #000000)); /* Saf4+, Chrome */
+	
+	box-shadow: inset 0 15px 35px #535353;
+}
+
+.titans-video-player.simpledark .titans-video-controls {
+	position: relative;
+	padding-top: 5px;
+	float: left;
+	clear: both;
+	width: 100%;
+}
+
+.titans-video-player.simpledark .titans-video-play, .titans-video-player.simpledark .titans-video-seek, .titans-video-player.simpledark .titans-volume-box, .titans-video-timer {
+	float: left;
+}
+
+/* play, pause */
+.titans-video-player.simpledark .titans-video-play {
+	display: block;
+	width: 22px;
+	height: 22px;
+	margin-right: 15px;
+	background: url(play-icon.png) no-repeat;	
+	background-size : 100%;	
+	opacity: 0.7;
+	-moz-transition: all 0.2s ease-in-out; /* Firefox */
+	-webkit-transition: all 0.2s ease-in-out; /* Safari and Chrome */
+	-o-transition: all 0.2s ease-in-out;  /* Opera */
+	transition: all 0.2s ease-in-out; 
+}
+
+.titans-video-player.simpledark .titans-paused-button {
+	background: url(pause-icon.png) no-repeat;
+	background-size : 100%
+}
+
+
+.titans-video-player.simpledark video {
+	float: left;
+}
+
+
+.titans-video-player.simpledark .titans-video-play:hover {	
+    opacity: 1;
+}
+
+/* seek */
+.titans-video-player.simpledark .titans-video-seek {
+	position:relative;		
+	width: 360px;
+	height: 10px;
+	margin-top: 5px;	
+	border: 1px solid #494949;
+
+	-moz-border-radius:15px;
+	-webkit-border-radius:15px;
+	border-radius:15px;
+	
+	background: #535353;
+	background-image: -moz-linear-gradient(top, #535353, #333333);
+	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #535353),color-stop(1, #333333));
+	
+	box-shadow: inset 0 -3px 3px #333333;
+}
+
+.titans-video-player.simpledark .titans-video-seek .ui-slider-handle {
+	width: 15px;
+	height: 15px;
+	border: 1px solid #333;
+	top: -4px;
+
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	border-radius:10px;	
+	
+	background: #e6e6e6;
+	background-image: -moz-linear-gradient(top, #e6e6e6, #d5d5d5);
+	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #e6e6e6),color-stop(1, #d5d5d5));
+	
+	box-shadow: inset 0 -3px 3px #d5d5d5;	
+}
+
+.titans-video-player.simpledark .titans-video-seek .ui-slider-handle.ui-state-hover {
+	background: #fff;
+}
+
+.titans-video-player.simpledark .titans-video-seek .ui-slider-range {
+	-moz-border-radius:15px;
+	-webkit-border-radius:15px;
+	border-radius:15px;
+	
+	background: #4cbae8;
+	background-image: -moz-linear-gradient(top, #4cbae8, #39a2ce);
+	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #4cbae8),color-stop(1, #39a2ce));
+	
+	box-shadow: inset 0 -3px 3px #39a2ce;
+}
+
+
+/* timer */
+.titans-video-player.simpledark .titans-video-timer {
+	margin-top: 5px;
+	margin-left: 10px;
+	
+	color: #999;
+	font-size: 0.7em;
+	font-weight: bold;
+}
+
+/* volume */
+.titans-video-player.simpledark .titans-volume-box {
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	overflow: hidden;
+	width: 20px;
+	height: 30px;
+	color: #fff;
+	padding: 0px 10px;
+	
+	-moz-transition: all 0.1s ease-in-out; /* Firefox */
+	-webkit-transition: all 0.1s ease-in-out; /* Safari and Chrome */
+	-o-transition: all 0.2s ease-in-out;  /* Opera */
+	transition: all 0.1s ease-in-out; 
+}
+
+.titans-video-player.simpledark .titans-volume-box:hover {	
+	height: 135px;
+	padding-top: 5px;
+}
+
+
+.titans-video-player.simpledark .titans-volume-box:hover .titans-volume-slider {
+	position: relative;
+	visibility: visible;
+	opacity: 1;
+}
+
+.titans-video-player.simpledark .titans-volume-slider {	
+	position: relative;
+	height: 100px;
+	width: 7px;
+	left: 4px;
+	
+	visiblity: hidden;
+	opacity: 0;
+	
+	border: 1px solid #444;
+
+	-moz-border-radius:15px;
+	-webkit-border-radius:15px;
+	border-radius:15px;
+	
+	background: #535353;
+	background-image: -moz-linear-gradient(top, #535353, #333333);
+	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #535353),color-stop(1, #333333));
+	
+	box-shadow: inset 0 3px 3px #333333;
+	
+	-moz-transition: all 0.1s ease-in-out; /* Firefox */
+	-webkit-transition: all 0.1s ease-in-out; /* Safari and Chrome */
+	-o-transition: all 0.1s ease-in-out;  /* Opera */
+	transition: all 0.1s ease-in-out; 
+}
+
+.titans-video-player.simpledark .titans-volume-slider .ui-slider-handle {
+	width: 12px;
+	height: 12px;
+	left: -4px;
+	margin-bottom:-0.6em;
+	margin-left:0;
+	border: 1px solid #333;	
+
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	border-radius:10px;	
+	
+	background: #e6e6e6;
+	background-image: -moz-linear-gradient(top, #e6e6e6, #d5d5d5);
+	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #e6e6e6),color-stop(1, #d5d5d5));
+	
+	box-shadow: inset 0 3px 3px #d5d5d5;	
+}
+
+.titans-video-player.simpledark .titans-volume-slider .ui-slider-handle.ui-state-hover {
+	background: #fff;
+}
+
+.titans-video-player.simpledark .titans-volume-slider .ui-slider-range {
+	-moz-border-radius:15px;
+	-webkit-border-radius:15px;
+	border-radius:15px;
+	
+	background: #e6e6e6;
+	background-image: -moz-linear-gradient(top, #e6e6e6, #d5d5d5);
+	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #e6e6e6),color-stop(1, #d5d5d5));
+	
+	box-shadow: inset 0 3px 3px #d5d5d5;
+}
+
+/* volume button */
+
+.titans-video-player.simpledark .titans-volume-button {
+	position: absolute;
+	bottom: 0px;
+	display: block;
+	width: 22px;
+	height: 22px;
+	background: url(volume-full-icon.png) no-repeat;
+	text-indent: -9999px;
+	background-size : 100%;	
+	opacity: 0.8;
+}
+
+.titans-video-player.simpledark .titans-volume-button:hover {
+	opacity: 1;
+}
+
+.titans-video-player.simpledark .titans-volume-mute {
+	background: url(volume-mute-icon.png) no-repeat;
+	background-size : 100%;	
+}
+
+
+/* Start of smalldark child theme */
+
+.titans-video-player.smalldark {
+	padding: 0px;
+}
+
+.titans-video-player.smalldark video:hover + .titans-video-controls {
+	visibility: visible;
+	opacity: 0.7;
+}
+
+.titans-video-player.smalldark .titans-video-controls:hover {
+	visibility: visible;
+	opacity: 0.7;
+}
+
+.titans-video-player.smalldark .titans-video-controls {
+	position: absolute;
+	top: 150px;
+	left: 80px;
+	width: 320px;
+	padding: 10px;
+	
+	border: 1px solid #2E2E2E;
+	
+	-moz-border-radius: 5px; /* FF1+ */
+	-webkit-border-radius: 5px; /* Saf3+, Chrome */
+	border-radius: 5px; /* Opera 10.5, IE 9 */
+	
+	background: #000000;
+	background-image: -moz-linear-gradient(top, #313131, #000000); /* FF3.6 */
+	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #313131),color-stop(1, #000000)); /* Saf4+, Chrome */
+	
+	opacity: 0;
+	visibility: hidden;
+	
+	box-shadow: inset 0 15px 35px #535353;
+	
+	-moz-transition: all 0.1s ease-in-out; /* Firefox */
+	-webkit-transition: all 0.1s ease-in-out; /* Safari and Chrome */
+	-o-transition: all 0.1s ease-in-out;  /* Opera */
+	transition: all 0.1s ease-in-out; 
+}
+
+.titans-video-player.smalldark .titans-video-seek {
+	width: 200px;
+}
+
+.titans-video-player.smalldark .titans-volume-box {
+	bottom: 10px;
+}
+
+.titans-video-player.smalldark .titans-volume-box:hover {	
+	height: 85px;	
+}
+
+.titans-video-player.smalldark .titans-volume-slider {
+	height: 50px;
+}
+
+/* needed jquery ui styles
+ * using these, we don't depend on jQuery UI's stylsheet
+ */
+.ui-slider-handle {
+	position: absolute;
+	z-index: 2;
+	display: block;
+	margin-left:-0.6em;
+	cursor: default;
+	outline: none;
+}
+
+.ui-slider-range {
+	display:block;
+	width:100%;	
+	height:100%;
+	left:0;
+	bottom: 0;
+	border:0 none;
+	position:absolute;
+	z-index:1;
+}

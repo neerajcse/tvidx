@@ -1,0 +1,51 @@
+<html lang="en"><head>
+  <meta charset="utf-8">  
+  <title>Video player with html5, css3 and javascript</title>  
+  <script src="js/jquery.js"></script>  
+  <script src="js/jquery.ui.js"></script>  
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+  <script src="js/jquery.tvidx.js"></script>    
+  <script>
+    $(function() {
+      $('#video1').gVideo();
+    });
+  </script>
+  <style>
+    body {
+      background-color: #ccc;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+    article {
+      display: block;
+      overflow: hidden;
+      width: 510px;
+      padding: 10px;
+      margin: 0px auto;
+      background-color: #fff;
+    }
+    section {
+      display: block;
+    }
+    section p {
+      padding: 10px;
+      clear: both;
+    }
+  </style>
+</head>
+<body>
+  
+  <article>
+
+    <h2>Custom video player with jQuery and CSS3</h2>
+    
+    <section>
+      <h3>Testing with just jquery</h3>
+        <video width="480" height="208" id="video1">
+          <source src="vid.ogv" type="video/ogg; codecs=&quot;theora, vorbis&quot;"></source>
+          <source src="vid.mp4" type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;"></source>
+        </video>
+    </section>
+  </article>
+</body></html>
